@@ -1,0 +1,41 @@
+<div class="jumbotron">
+  <h1>Getting Started</h1>
+</div>
+<div class="row marketing">
+<div class="col-lg-4">
+  <h3>Dependencies</h3>
+  <p>The obvious one: add phauxth to your mix.exs file</p>
+  <p>You also need a password hashing library</p>
+  <ul>
+  <a href="https://github.com/riverrun/argon2_elixir">argon2_elixir</a><br>
+  <a href="https://github.com/riverrun/bcrypt_elixir">bcrypt_elixir</a><br>
+  <a href="https://github.com/riverrun/pbkdf2_elixir">pbkdf2_elixir</a><br>
+  </ul>
+</div>
+<div class="col-lg-4">
+  <h3>The Phauxth Installer</h3>
+  <p>You can install the phauxth installer <a href="https://github.com/riverrun/phauxth_installer/raw/master/archives/phauxth_new.ez">here!</a></p>
+  <p>Once installed, you can run the base command: mix phauxth.new (but I don't recommend this!)</p>
+  <p>The Flags:</p>
+  <ul>
+    <li>--confirm - This adds email & phone confirmation as well as password resetting</li>
+    <li>--remember - This adds a "remember me" option</li>
+    <li>--api - creates files for api authentication</li>
+    <li>--api --confirm - adds email & phone confirmation for api's</li>
+    <li>--no-backups - IMPORTANT: Does the basic phauxth install without replacing current views with backups</li>
+  </ul>
+</div>
+<div class="col-lg-4">
+  <h3>Housekeeping</h3>
+  <p>Phauxth automatically creates session controller, authorization controller, and a user controller</p>
+  <p>Because of the user controller it is best to start an app with Phauxth in mind. However, if you don't its not the end of the world. You will have to migrate your existing user class to the accounts/user.ex folder</p>
+  <p>The Flags:</p>
+  <ul>
+    <li>--confirm - This adds email & phone confirmation as well as password resetting</li>
+    <li>--remember - This adds a "remember me" option</li>
+    <li>--api - creates files for api authentication</li>
+    <li>--api --confirm - adds email & phone confirmation for api's</li>
+    <li>--no-backups - IMPORTANT: Does the basic phauxth install without replacing current views with backups</li>
+  </ul>
+</div>
+</div>

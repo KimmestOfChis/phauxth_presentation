@@ -1,0 +1,19 @@
+<div class="jumbotron">
+  <h2>Authentication with Phauxth!</h2>
+  <p class="lead">What does Phauxth do for me?</p>
+</div>
+
+<div class="row marketing">
+  <div class="col-lg-4">
+    <h4>Basic Authentication</h4>
+  </div>
+
+  <div class="col-lg-4">
+    <h4>Session Management</h4>
+  </div>
+  <div class="col-lg-4">
+    <h4>Authorization</h4>
+  </div>
+  <center><a href="https://github.com/riverrun/phauxth">Link to the Phauxth Github Page</a><br>
+  <%= link "Want to get started?", to: page_path(@conn, :getting_started) %></center>
+</div>
