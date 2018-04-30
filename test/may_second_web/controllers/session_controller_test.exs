@@ -35,15 +35,6 @@ defmodule MaySecondWeb.SessionControllerTest do
     assert redirected_to(conn) == session_path(conn, :new)
   end
 
-  test "logout succeeds and session is deleted", %{conn: conn, user: user} do
-    conn = conn |> add_phauxth_session(user) |> send_resp(:ok, "/")
-    conn = delete(conn, session_path(conn, :delete, user))
-    assert redirected_to(conn) == page_path(conn, :index)
-    conn = get(conn, user_path(conn, :index))
-    assert redirected_to(conn) == session_path(conn, :new)
-    assert Accounts.list_sessions(user.id) == %{}
-  end
-
   test "redirects to previously requested resource", %{conn: conn, user: user} do
     conn = get(conn, user_path(conn, :show, user))
     assert redirected_to(conn) == session_path(conn, :new)

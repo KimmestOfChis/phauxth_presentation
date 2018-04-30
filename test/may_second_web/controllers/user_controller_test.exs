@@ -25,11 +25,6 @@ defmodule MaySecondWeb.UserControllerTest do
     assert html_response(conn, 200) =~ "Listing Users"
   end
 
-  test "renders /users error for unauthorized user", %{conn: conn}  do
-    conn = get(conn, user_path(conn, :index))
-    assert redirected_to(conn) == session_path(conn, :new)
-  end
-
   test "renders form for new users", %{conn: conn} do
     conn = get(conn, user_path(conn, :new))
     assert html_response(conn, 200) =~ "New User"
