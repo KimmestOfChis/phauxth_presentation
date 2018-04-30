@@ -43,7 +43,7 @@ defmodule MaySecondWeb.UserControllerTest do
 
   test "creates user when data is valid", %{conn: conn} do
     conn = post(conn, user_path(conn, :create), user: @create_attrs)
-    assert redirected_to(conn) == session_path(conn, :new)
+    assert redirected_to(conn) == user_path(conn, :index)
   end
 
   @tag login: "reg@example.com"
@@ -65,7 +65,7 @@ defmodule MaySecondWeb.UserControllerTest do
   @tag login: "reg@example.com"
   test "deletes chosen user", %{conn: conn, user: user} do
     conn = delete(conn, user_path(conn, :delete, user))
-    assert redirected_to(conn) == session_path(conn, :new)
+    assert redirected_to(conn) == user_path(conn, :index)
     refute Accounts.get(user.id)
   end
 
