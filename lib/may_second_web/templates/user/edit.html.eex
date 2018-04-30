@@ -34,7 +34,7 @@
 
     <div class="form-group">
       <%= label f, :role, class: "control-label" %>
-      <%= select f, :role, class: "form-control" %>
+      <%= select f, :role, @roles, class: "form-control" %>
       <%= error_tag f, :role %>
     </div>
 

@@ -4,12 +4,12 @@ defmodule MaySecondWeb.SessionControllerTest do
   import MaySecondWeb.AuthCase
   alias MaySecond.Accounts
 
-  @create_attrs %{first_name: "User", last_name: "McUserson", secret: "I'm actually Canadian", email: "fred@example.com", password: "password"}
+  @create_attrs %{first_name: "User", last_name: "McUserson", secret: "I'm actually Canadian",  email: "fred@example.com", role: "Seller", password: "password"}
   @invalid_attrs %{email: "robin@example.com", password: "cannotGue$$it"}
 
   setup %{conn: conn} do
     conn = conn |> bypass_through(MaySecondWeb.Router, [:browser]) |> get("/")
-    user = add_user("batman", "robin", "robin@example.com", "Iron man is better", "jinglebellsbatmansmells")
+    user = add_user("batman", "robin", "robin@example.com", "Iron man is better", "Buyer", "jinglebellsbatmansmells")
     {:ok, %{conn: conn, user: user}}
   end
 

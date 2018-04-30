@@ -3,15 +3,15 @@ defmodule MaySecondWeb.UserControllerTest do
 
   import MaySecondWeb.AuthCase
   alias MaySecond.Accounts
-  @create_attrs %{first_name: "Billiam", last_name: "Clinton", email: "bill@example.com", secret: "Too many to mention, probably", password: "hard2guess"}
+  @create_attrs %{first_name: "Billiam", last_name: "Clinton", email: "bill@example.com", secret: "Too many to mention, probably", role: "Seller", password: "hard2guess"}
   @update_attrs %{email: "william@example.com"}
   @invalid_attrs %{email: nil}
 
   setup %{conn: conn} = config do
     conn = conn |> bypass_through(MaySecondWeb.Router, [:browser]) |> get("/")
     if email = config[:login] do
-      user = add_user("tony", "stark", "tony@example.com", "I'm jelly of Captain America", "password")
-      other = add_user("steve", "rogers", "sr@example.com", "I am pretty kewl", "password")
+      user = add_user("tony", "stark", "tony@example.com", "I'm jelly of Captain America", "Buyer", "password")
+      other = add_user("steve", "rogers", "sr@example.com", "I am pretty kewl", "Seller", "password")
       conn = conn |> add_phauxth_session(user) |> send_resp(:ok, "/")
       {:ok, %{conn: conn, user: user, other: other}}
     else
@@ -43,12 +43,7 @@ defmodule MaySecondWeb.UserControllerTest do
 
   test "creates user when data is valid", %{conn: conn} do
     conn = post(conn, user_path(conn, :create), user: @create_attrs)
-    assert redirected_to(conn) == session_path(conn, :new)
-  end
-
-  test "does not create user and renders errors when data is invalid", %{conn: conn} do
-    conn = post(conn, user_path(conn, :create), user: @invalid_attrs)
-    assert html_response(conn, 200) =~ "New User"
+    assert redirected_to(conn) == user_path(conn, :index)
   end
 
   @tag login: "reg@example.com"
@@ -65,12 +60,6 @@ defmodule MaySecondWeb.UserControllerTest do
     assert updated_user.email == "william@example.com"
     conn = get conn,(user_path(conn, :show, user))
     assert html_response(conn, 200) =~ "william@example.com"
-  end
-
-  @tag login: "reg@example.com"
-  test "does not update chosen user and renders errors when data is invalid", %{conn: conn, user: user} do
-    conn = put(conn, user_path(conn, :update, user), user: @invalid_attrs)
-    assert html_response(conn, 200) =~ "Edit User"
   end
 
   @tag login: "reg@example.com"
