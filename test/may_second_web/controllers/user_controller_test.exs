@@ -65,7 +65,7 @@ defmodule MaySecondWeb.UserControllerTest do
   @tag login: "reg@example.com"
   test "deletes chosen user", %{conn: conn, user: user} do
     conn = delete(conn, user_path(conn, :delete, user))
-    assert redirected_to(conn) == session_path(conn, :new)
+    assert redirected_to(conn) ==  page_path(conn, :index)
     refute Accounts.get(user.id)
   end
 
