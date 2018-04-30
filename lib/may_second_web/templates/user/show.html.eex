@@ -28,6 +28,10 @@
     <%= @user.admin %>
   </li>
 
+  <li>
+    <strong>Role:</strong>
+    <%= @user.role %>
+  </li>
 
 </ul>
 

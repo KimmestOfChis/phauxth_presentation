@@ -9,6 +9,7 @@ defmodule MaySecond.Accounts.User do
     field :admin, :boolean, default: false
     field :secret, :string
     field :email, :string
+    field :role, :string
     field :password, :string, virtual: true
     field :password_hash, :string
     field :sessions, {:map, :integer}, default: %{}
@@ -18,15 +19,15 @@ defmodule MaySecond.Accounts.User do
 
   def changeset(%User{} = user, attrs) do
     user
-    |> cast(attrs, [:first_name, :last_name, :admin, :secret, :email])
-    |> validate_required([:first_name, :last_name, :admin, :secret, :email])
+    |> cast(attrs, [:first_name, :last_name, :admin, :secret, :email, :role])
+    |> validate_required([:first_name, :last_name, :admin, :secret, :email, :role])
     |> unique_email
   end
 
   def create_changeset(%User{} = user, attrs) do
     user
-    |> cast(attrs, [:first_name, :last_name, :admin, :secret ,:email, :password])
-    |> validate_required([:first_name, :last_name, :admin, :secret ,:email, :password])
+    |> cast(attrs, [:first_name, :last_name, :admin, :secret ,:email, :password, :role])
+    |> validate_required([:first_name, :last_name, :admin, :secret ,:email, :password, :role])
     |> unique_email
     |> validate_password(:password)
     |> put_pass_hash

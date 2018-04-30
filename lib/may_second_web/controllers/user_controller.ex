@@ -16,7 +16,8 @@ defmodule MaySecondWeb.UserController do
 
   def new(conn, _) do
     changeset = Accounts.change_user(%Accounts.User{})
-    render(conn, "new.html", changeset: changeset)
+    roles = ["Buyer", "Seller"]
+    render(conn, "new.html", changeset: changeset, roles: roles)
   end
 
   def create(conn, %{"user" => user_params}) do
