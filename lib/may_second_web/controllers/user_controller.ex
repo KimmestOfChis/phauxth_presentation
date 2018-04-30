@@ -6,7 +6,7 @@ defmodule MaySecondWeb.UserController do
   alias MaySecond.Accounts
 
   # the following plugs are defined in the controllers/authorize.ex file
-  plug :user_check when action in [:index, :show]
+  plug :user_check when action in [:show]
   plug :id_check when action in [:edit, :update, :delete]
 
   def index(conn, _) do
