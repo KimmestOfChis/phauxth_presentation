@@ -4,7 +4,7 @@ defmodule MaySecond.AccountsTest do
   alias MaySecond.Accounts
   alias MaySecond.Accounts.User
 
-  @create_attrs %{first_name: "User", last_name: "McUserson", secret: "I'm actually Canadian", email: "fred@example.com", password: "reallyHard2gue$$"}
+  @create_attrs %{first_name: "User", last_name: "McUserson", secret: "I'm actually Canadian", email: "fred@example.com", role: "Buyer", password: "reallyHard2gue$$"}
   @update_attrs %{email: "frederick@example.com"}
   @invalid_attrs %{email: "", password: ""}
 

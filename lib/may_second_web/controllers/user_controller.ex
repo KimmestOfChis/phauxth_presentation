@@ -38,7 +38,8 @@ defmodule MaySecondWeb.UserController do
 
   def edit(%Plug.Conn{assigns: %{current_user: user}} = conn, _) do
     changeset = Accounts.change_user(user)
-    render(conn, "edit.html", user: user, changeset: changeset)
+    roles = ["Buyer", "Seller"]
+    render(conn, "edit.html", user: user, changeset: changeset, roles: roles)
   end
 
   def update(%Plug.Conn{assigns: %{current_user: user}} = conn, %{"user" => user_params}) do
