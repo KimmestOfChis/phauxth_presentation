@@ -60,6 +60,6 @@ defmodule MaySecondWeb.UserController do
     {:ok, _user} = Accounts.delete_user(user)
 
     delete_session(conn, :phauxth_session_id)
-    |> success("User deleted successfully", session_path(conn, :new))
+    |> success("User deleted successfully", page_path(conn, :index))
   end
 end
