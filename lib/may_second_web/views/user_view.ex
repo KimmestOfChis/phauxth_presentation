@@ -1,6 +1,7 @@
 defmodule MaySecondWeb.UserView do
   use MaySecondWeb, :view
   alias MaySecondWeb.UserView
+  import MaySecondWeb.Authorize
 
   def render("index.json", %{users: users}) do
     %{data: render_many(users, UserView, "user.json")}

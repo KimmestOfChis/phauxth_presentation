@@ -26,4 +26,6 @@
   </tbody>
 </table>
 
+<%= if @current_user.admin do %>
 <span><%= link "New User", to: user_path(@conn, :new) %></span>
+<% end %>

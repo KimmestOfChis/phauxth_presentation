@@ -74,4 +74,10 @@ defmodule MaySecondWeb.Authorize do
     |> put_session(:request_path, current_path(conn))
     |> error("You need to log in to view this page", session_path(conn, :new))
   end
+  def is_admin?(%Plug.Conn{assigns: %{current_user: current_user}} = conn, _opts) do
+    unless current_user.admin do
+      error(conn, "You must be an admin to see this page!", user_path(conn, :index))
+    end
+    conn
+  end
 end
