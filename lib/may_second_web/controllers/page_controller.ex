@@ -1,5 +1,6 @@
 defmodule MaySecondWeb.PageController do
   use MaySecondWeb, :controller
+  import MaySecondWeb.Authorize
 
   def index(conn, _params) do
     render conn, "index.html"
