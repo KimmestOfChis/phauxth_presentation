@@ -4,6 +4,7 @@ defmodule MaySecondWeb.UserControllerTest do
   import MaySecondWeb.AuthCase
   alias MaySecond.Accounts
   @create_attrs %{first_name: "Billiam", last_name: "Clinton", email: "bill@example.com", secret: "Too many to mention, probably", role: "Seller", password: "hard2guess"}
+  @admin_attrs %{first_name: "Admin", last_name: "McAdminson", email: "admin@example.com", secret: "I chew gum to prevent my double chin",  role: "Seller",  password: "password", admin: true}
   @update_attrs %{email: "william@example.com"}
   @invalid_attrs %{email: nil}
 
