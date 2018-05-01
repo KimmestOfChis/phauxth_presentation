@@ -35,10 +35,4 @@ defmodule MaySecondWeb.SessionControllerTest do
     assert redirected_to(conn) == session_path(conn, :new)
   end
 
-  test "redirects to previously requested resource", %{conn: conn, user: user} do
-    conn = get(conn, user_path(conn, :show, user))
-    assert redirected_to(conn) == session_path(conn, :new)
-    conn = post(conn, session_path(conn, :create), session: @create_attrs)
-    assert redirected_to(conn) == session_path(conn, :new)
-  end
 end

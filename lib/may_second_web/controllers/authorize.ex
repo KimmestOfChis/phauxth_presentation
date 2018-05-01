@@ -72,6 +72,6 @@ defmodule MaySecondWeb.Authorize do
   def need_login(conn) do
     conn
     |> put_session(:request_path, current_path(conn))
-    |> error("You need to log in to view this page", session_path(conn, :new))
+    |> error("You need to log in to view this page", page_path(conn, :index))
   end
 end
