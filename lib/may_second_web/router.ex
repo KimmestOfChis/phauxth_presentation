@@ -15,6 +15,8 @@ defmodule MaySecondWeb.Router do
 
     get "/", PageController, :index
     get "/getting_started", PageController, :getting_started
+    get "/admin", PageController, :admin
+    get "/buyer", PageController, :buyer
     resources "/users", UserController
     resources "/sessions", SessionController, only: [:new, :create, :delete]
   end
