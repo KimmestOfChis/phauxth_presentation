@@ -20,12 +20,6 @@ defmodule MaySecondWeb.UserControllerTest do
     end
   end
 
-  @tag login: "reg@example.com"
-  test "lists all entries on index", %{conn: conn} do
-    conn = get(conn, user_path(conn, :index))
-    assert html_response(conn, 200) =~ "Listing Users"
-  end
-
   test "renders form for new users", %{conn: conn} do
     conn = get(conn, user_path(conn, :new))
     assert html_response(conn, 200) =~ "New User"
