@@ -33,7 +33,12 @@ defmodule MaySecondWeb.UserControllerTest do
 
   test "creates user when data is valid", %{conn: conn} do
     conn = post(conn, user_path(conn, :create), user: @create_attrs)
-    assert redirected_to(conn) == session_path(conn, :new)
+    assert redirected_to(conn) == page_path(conn, :index)
+  end
+
+  test "dont allow in unauthenticated users on /users", %{conn: conn} do
+    conn = get(conn, user_path(conn, :index))
+    assert redirected_to(conn) == page_path(conn, :index)
   end
 
   @tag login: "reg@example.com"
