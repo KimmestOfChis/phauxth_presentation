@@ -3,8 +3,8 @@ defmodule MaySecondWeb.AuthCase do
 
   alias MaySecond.Accounts
 
-  def add_user(first_name, last_name, email, secret, role, password) do
-    user = %{first_name: first_name, last_name: last_name, secret: secret, email: email, role: role, password: password}
+  def add_user(first_name, last_name, email, secret, role, password, admin) do
+    user = %{first_name: first_name, last_name: last_name, secret: secret, email: email, role: role, password: password, admin: admin}
     {:ok, user} = Accounts.create_user(user)
     user
   end

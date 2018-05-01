@@ -4,10 +4,9 @@ defmodule MaySecondWeb.UserController do
   import MaySecondWeb.Authorize
   alias Phauxth.Log
   alias MaySecond.Accounts
-  alias Phauxth.Login
 
   # the following plugs are defined in the controllers/authorize.ex file
-  plug :user_check when action in [:index, :show]
+  plug :user_check when action in [:show]
   plug :id_check when action in [:edit, :update, :delete]
 
   def index(conn, _) do
@@ -25,10 +24,7 @@ defmodule MaySecondWeb.UserController do
     case Accounts.create_user(user_params) do
       {:ok, user} ->
         Log.info(%Log{user: user.id, message: "user created"})
-        session_id = Login.gen_session_id("F")
-        Accounts.add_session(user, session_id, System.system_time(:second))
-        Login.add_session(conn, session_id, user.id)
-        success(conn, "User created successfully", user_path(conn, :index))
+        success(conn, "User created successfully", session_path(conn, :new))
 
       {:error, %Ecto.Changeset{} = changeset} ->
         render(conn, "new.html", changeset: changeset)
@@ -61,5 +57,8 @@ defmodule MaySecondWeb.UserController do
 
     delete_session(conn, :phauxth_session_id)
     |> success("User deleted successfully", page_path(conn, :index))
+  end
+  def admins_only(conn, _params) do
+    render conn, "only_admins.html"
   end
 end
